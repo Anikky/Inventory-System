@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <div class="container" style=" margin-top: 20px; font-size: 30px; font-weight: bold;">
+
+        <table border="2" style="color: blue;">
+            <thead>
+                <tr>
+                    <th>S/N</th>
+                    <th>Name</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Quantity to buy</th>
+                    <th>Cost</th>
+
+                </tr>
+
+            </thead>
+            <tbody id="input">
+
+
+
+                <!-- <tr>
+                <td>1</td>
+                <td>Phone</td>
+                <td>10</td>
+                <td>100000</td>
+                <td><img src="images/"+ filename></td>
+                <td><input type="" placeholder="Quantity to buy"></td>
+                <td>dddd</td>
+            </tr> -->
+
+            </tbody>
+        </table>
+        <button>checkout</button>
+        <tr>
+            <td colspan="4">total</td>
+        </tr>
+    </div>
+    <script type="text/javascript">
+        // const myFunc = (index) => {
+        //     let id = 'myVal' + index;
+        //     document.getElementById(id).value = arr[index].price * arr[index].Quantity 
+            
+
+        // }
+
+        const myFunc = (e) => {
+            // let Details = e.target.value
+            myCost.value= 'Details';
+        }
+
+        var arr = localStorage.getItem("Goods");
+        var user = JSON.parse(arr);
+        for (let i = 0; i < user.length; i++) {
+            input.innerHTML += "<tr><td>" + [i + 1] + "</td><td>" + user[i].Good + "</td><td>" + user[i].Quantity + "</td><td>" + user[i].Price + "</td><td>" + "<img src='images/" + user[i].Image.slice(12) +"'>" + "</td><td><input onkeyup='myFunc(e)' type= 'number'></td><td id='myCost'></td></tr>";
+
+
+        }
+
+
+
+
+    </script>
+    
+</body>
+
+</html>

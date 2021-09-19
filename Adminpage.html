@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=div, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Adminpage.css">
+    <link rel="stylesheet" href="bootstrap-5.0.0-beta3-dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <div class="container mt-5" id="container">
+        <h2>ADMIN PAGE</h2>
+        <br>
+        <div class="row">
+            <div class="col-4">
+                <h1 style="font-size: 20pt">GOODS </h1><br>
+                <input class="input" type="" placeholder="name of good" id="input">
+            </div>
+            <div class="col-4">
+                <h1 style="font-size: 20pt">QUANTITY</h1><br>
+                <input class="input" type="" placeholder="Quantity" id="input1">
+            </div>
+
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-4">
+                <h1 style="font-size: 20pt">PRICE</h1><br>
+                <input class="input" type="" placeholder="price" id="input2">
+            </div>
+            <div class="col-4">
+                <h1 style="font-size: 20pt">IMAGE</h1><br>
+                <input class="input" type="file" name="" id="input3">
+            </div>
+
+        </div>
+        <br>
+        <button onclick="setGood()" id="button">Add Good</button>
+
+    </div>
+
+    <table border="2" style="background-color: rgb(92, 163, 211); color: white; margin: auto; ">
+        <thead>
+            <tr style="align-content: center;">
+                <th>S/N</th>
+                <th>Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Delete</th>
+                <th>Edit</th>
+            </tr>
+        <tbody id="myDisplay"></tbody>
+
+        </thead>
+    </table>
+    <script type="text/javascript">
+        //var newArray = [];
+        var newArray = JSON.parse(localStorage.getItem("Goods"));
+        //var newArray = [];
+
+        var goods;
+        //var listOfGood = []
+
+        const setGood = () => {
+            // goodObj = {Good: input.value, Quantity: input1.value, Price: input2.value, Image: input3.vale};
+            // listOfGood.push(goodObj);
+            // console.log(listOfGood)
+            // alert("Successfully added")
+            // localStorage.setItem("Goods", JSON.stringify(listOfGood));
+
+            if (input.value != "" && input1.value != "" && input2.value != "" && input3.value != "") {
+
+            }
+
+
+            if (input.value == "" && input1.value == "" && input2.value == "" && input3.value == "") {
+                alert("insert your goods")
+            }
+            else {
+                let goodObj = { Good: input.value, Quantity: input1.value, Price: input2.value, Image: input3.value };
+                newArray.push(goodObj);
+                localStorage.setItem("Goods", JSON.stringify(newArray));
+                goods = JSON.parse(localStorage.getItem("Goods"));
+                alert("Goods added successfully");
+
+            }
+        }
+
+        const myReload = () => {
+            for (let index = 0; index < newArray.length; index++) {
+                let res = newArray[index];
+                let num = index + 1;
+                myDisplay.innerHTML += "<tr><th>" + num + "</th><th>" + res.Good + "</th><th>" + res.Quantity + "</th><th>" + res.Price + "</th><th>" + res.Image + "</th><th>Delete</th><th>Edit</th></tr>";
+            }
+        }
+        myReload();
+
+
+
+    </script>
+</body>
+
+</html>
